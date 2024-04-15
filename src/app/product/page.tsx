@@ -1,10 +1,10 @@
 import HomeLayout from "@/components/layouts/home";
-import { HomeProduct } from "@/components/product/home-product";
-import HomeSlider from "@/components/slider/home-slider";
 import { HomeMenu } from "@/components/menu/home-menu";
 import { TopSearch } from "@/components/menu/top-search";
+import { HomeProduct } from "@/components/product/home-product";
+import HomeSlider from "@/components/slider/home-slider";
 
-function Home() {
+function ListProduct() {
     return <HomeLayout>
         <div className="container mx-auto px-4">
             <HomeSlider />
@@ -15,4 +15,4 @@ function Home() {
     </HomeLayout>;
 }
 
-export default Home;
+export default ListProduct;
