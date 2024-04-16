@@ -1,8 +1,12 @@
 "use client";
 
 import { CardIcon } from "@/components/@icon/card";
+import { LisCart } from "@/components/cart/list-cart";
+import { useState } from "react";
 
 export default function HomeHeader() {
+    const [isShowCart, setIsShowCart] = useState(false);
+
     return (
         <header className="fixed top-0 left-0 right-0 z-50">
             <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
@@ -58,12 +62,14 @@ export default function HomeHeader() {
                                 <button type="submit" className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
                             </div>
                         </form>
-                         <div className="pl-2">
+                        <div className="pl-2" onClick={() => setIsShowCart(true)}>
                             <CardIcon />
-                         </div>
+                        </div>
                     </div>
                 </div>
             </nav>
+
+            <LisCart isShowCart={isShowCart} setIsShowCart={setIsShowCart} />
         </header>
     )
 }
