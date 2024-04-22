@@ -1,4 +1,4 @@
-import { HomePagination } from "@/components/pagination/pagination"
+import { Pagination } from "@/components/pagination/pagination"
 
 export const HomeProduct = () => {
     return <div className="mt-8">
@@ -86,7 +86,7 @@ export const HomeProduct = () => {
             </div>
 
         </div>
-        <HomePagination />
+        <Pagination />
     </div>
 
 }

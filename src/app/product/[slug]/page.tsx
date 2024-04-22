@@ -1,10 +1,10 @@
-import HomeLayout from "@/components/layouts/home";
+import Layout from "@/components/layouts";
 import { HomeMenu } from "@/components/menu/home-menu";
 import { TopSearch } from "@/components/menu/top-search";
 import HomeSlider from "@/components/slider/home-slider";
 
 function DetailProduct() {
-    return <HomeLayout>
+    return <Layout>
         <div className="container mx-auto px-4">
 
             <section className="text-gray-700 body-font overflow-hidden bg-white">
@@ -104,7 +104,7 @@ function DetailProduct() {
             <TopSearch />
             <HomeMenu />
         </div>
-    </HomeLayout>;
+    </Layout>;
 }
 
 export default DetailProduct;

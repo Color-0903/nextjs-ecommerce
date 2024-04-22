@@ -12,10 +12,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
 
-
   return (
     <html lang="en">
-      <body className="mt-48">{children}</body>
+      <body>{children}</body>
     </html>
   )
 }

@@ -1,7 +1,7 @@
-import HomeLayout from "@/components/layouts/home";
+import Layout from "@/components/layouts";
 
 function Profile() {
-  return <HomeLayout> HIHI </HomeLayout>;
+  return <Layout> HIHI </Layout>;
 }
 
 export default Profile;
