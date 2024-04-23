@@ -10,7 +10,7 @@ export default function UserHeader() {
                     <div className="flex items-center">
                         <div className="w-64 hidden sm:flex items-center gap-3">
                             <img src="	https://flowbite.com/docs/images/logo.svg" alt="logo"></img>
-                            <span className="font-bold">Color-Ecommerce</span>
+                            <span className="font-extrabold text-orange-500">Color-Ecommerce</span>
                         </div>
                         <div className="flex flex-1 items-center justify-between">
                             <Breadcrum />

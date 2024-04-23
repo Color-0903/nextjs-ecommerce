@@ -15,7 +15,6 @@ const Breadcrum = () => {
 
     useEffect(() => {
         setBreadcrumb(pathToBreacrumb);
-        console.log(pathToBreacrumb)
     }, [pathname]);
 
     return (
