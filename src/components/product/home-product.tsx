@@ -3,7 +3,7 @@ import { Pagination } from "@/components/pagination/pagination"
 export const HomeProduct = () => {
     return <div className="mt-8">
         <div className="border text-center">
-            <p className="py-3 text-2xl font-medium text-gray-900 dark:text-white tracking-wide border-b-4 border-indigo-500">Sản phẩm</p>
+            <p className="py-3 text-2xl font-medium text-gray-900 dark:text-white tracking-wide border-b-4 border-orange-500">Sản phẩm</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4 ">
             <div className="bg-white border border-gray-200 pb-4 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110duration-300 ... overflow-hidden">

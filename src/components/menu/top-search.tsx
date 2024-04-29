@@ -2,7 +2,7 @@
 export const TopSearch = () => {
     return <div className="border mt-8">
         <div className="mt-4 text-left pl-3">
-            <p className="py-3 p text-2xl font-medium text-gray-900 dark:text-white tracking-wide  border-b-4 border-indigo-500 w-fit">Top tìm kiếm</p>
+            <p className="py-3 p text-2xl font-medium text-gray-900 dark:text-white tracking-wide  border-b-4 border-orange-500 w-fit">Top tìm kiếm</p>
         </div>
         <div className="px-5 pb-2 mt-4">
             <div className="grid grid-flow-col gap-3 overflow-x-auto">
