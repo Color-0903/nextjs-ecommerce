@@ -1,6 +1,6 @@
 export const OrderStepper = () => {
-    return <ol className="flex items-center w-full mt-6 pb-6 overflow-x-scroll overflow-y-hidden px-4">
-        <li className="flex min-w-32 relative w-full items-center  dark:text-blue-500 after:content-[''] after:w-full after:border-b after:border-orange-500 after:border-4 after:inline-block dark:after:border-blue-800">
+    return <ol className="flex items-center w-full mt-7 pb-6 overflow-x-scroll overflow-y-hidden px-4">
+        <li className="flex pt-1  min-w-32 relative w-full items-center  dark:text-blue-500 after:content-[''] after:w-full after:border-b after:border-orange-500 after:border-4 after:inline-block dark:after:border-blue-800">
             <span className="flex items-center justify-center md:w-16 md:h-16 w-12 h-12 cursor-pointer hover:scale-105 hover:opacity-90 bg-orange-500 rounded-full lg:h-18 lg:w-18 dark:bg-blue-800 shrink-0">
                 <svg className="w-4 h-4 text-white md:w-6 md:h-6 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />

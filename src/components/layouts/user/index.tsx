@@ -9,7 +9,7 @@ export default function UserLayout({ children }: Readonly<{ children: React.Reac
     return (
         <>
             <UserHeader></UserHeader>
-            <div className="mt-28">
+            <div className="mt-24 md:mt-28">
             {children}
             </div>
             <UserFooter></UserFooter>

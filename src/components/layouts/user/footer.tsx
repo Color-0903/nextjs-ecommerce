@@ -1,6 +1,6 @@
 "use client";
 export default function UserFooter() {
-    return <footer className="bg-gray-50 shadow dark:bg-gray-900 dark:border-gray-700 border-t-2 mt-7">
+    return <footer className="hidden md:block bg-gray-50 shadow dark:bg-gray-900 dark:border-gray-700 border-t-2 mt-7">
         <div className="w-full max-w-screen-sm mx-auto p-4 md:py-8 mt-1">
             <div >
                 <a href="https://flowbite.com/" className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse justify-center mx-auto">
