@@ -8,7 +8,7 @@ export const ProductTable = () => {
         <div className="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-end justify-between pb-4 mt-6">
             <label htmlFor="table-search" className="sr-only">Search</label>
             <div className="m-0">
-                <input type="text" id="table-search" className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items" />
+                <input type="text" id="table-search" className="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-orange-500 focus:border-orange-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="Search for items" />
             </div>
             <div className="flex items-end">
                 <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio" className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
@@ -24,13 +24,13 @@ export const ProductTable = () => {
                     <ul className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioButton">
                         <li>
                             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <input id="filter-radio-example-1" type="radio" value="" name="filter-radio" className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                 <label htmlFor="filter-radio-example-1" className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last day</label>
                             </div>
                         </li>
                         <li>
                             <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
-                                <input id="filter-radio-example-2" type="radio" value="" name="filter-radio" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                                <input id="filter-radio-example-2" type="radio" value="" name="filter-radio" className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 focus:ring-orange-500 dark:focus:ring-orange-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                                 <label htmlFor="filter-radio-example-2" className="w-full ms-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300">Last day</label>
                             </div>
                         </li>
@@ -44,7 +44,7 @@ export const ProductTable = () => {
                 <tr>
                     <th scope="col" className="p-4">
                         <div className="flex items-center">
-                            <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input id="checkbox-all-search" type="checkbox" className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="checkbox-all-search" className="sr-only">checkbox</label>
                         </div>
                     </th>
@@ -69,7 +69,7 @@ export const ProductTable = () => {
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-4 p-4">
                         <div className="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                         </div>
                     </td>
@@ -86,7 +86,7 @@ export const ProductTable = () => {
                         $2999
                     </td>
                     <td className="px-6 py-4 flex divide-x">
-                        <a href="#" className="font-medium text-blue-500 hover:underline text-center pr-3">Edit</a>
+                        <a href="#" className="font-medium text-orange-500 hover:underline text-center pr-3">Edit</a>
                         <a data-modal-target="popup-modal" data-modal-toggle="popup-modal" href="#" className="font-medium text-orange-500 hover:underline text-center pl-3">Remove</a>
                     </td>
                 </tr>
@@ -95,7 +95,7 @@ export const ProductTable = () => {
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-4 p-4">
                         <div className="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                         </div>
                     </td>
@@ -112,7 +112,7 @@ export const ProductTable = () => {
                         $2999
                     </td>
                     <td className="px-6 py-4 flex divide-x">
-                        <a href="#" className="font-medium text-blue-500 hover:underline text-center pr-3">Edit</a>
+                        <a href="#" className="font-medium text-orange-500 hover:underline text-center pr-3">Edit</a>
                         <a data-modal-target="popup-modal" data-modal-toggle="popup-modal" href="#" className="font-medium text-orange-500 hover:underline text-center pl-3">Remove</a>
                     </td>
                 </tr>
@@ -121,7 +121,7 @@ export const ProductTable = () => {
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-4 p-4">
                         <div className="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                         </div>
                     </td>
@@ -138,7 +138,7 @@ export const ProductTable = () => {
                         $2999
                     </td>
                     <td className="px-6 py-4 flex divide-x">
-                        <a href="#" className="font-medium text-blue-500 hover:underline text-center pr-3">Edit</a>
+                        <a href="#" className="font-medium text-orange-500 hover:underline text-center pr-3">Edit</a>
                         <a data-modal-target="popup-modal" data-modal-toggle="popup-modal" href="#" className="font-medium text-orange-500 hover:underline text-center pl-3">Remove</a>
                     </td>
                 </tr>
@@ -147,7 +147,7 @@ export const ProductTable = () => {
                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                     <td className="w-4 p-4">
                         <div className="flex items-center">
-                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <input id="checkbox-table-search-1" type="checkbox" className="w-4 h-4 text-orange-500 bg-gray-100 border-gray-300 rounded focus:ring-orange-500 dark:focus:ring-orange-500 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
                             <label htmlFor="checkbox-table-search-1" className="sr-only">checkbox</label>
                         </div>
                     </td>
@@ -164,7 +164,7 @@ export const ProductTable = () => {
                         $2999
                     </td>
                     <td className="px-6 py-4 flex divide-x">
-                        <a href="#" className="font-medium text-blue-500 hover:underline text-center pr-3">Edit</a>
+                        <a href="#" className="font-medium text-orange-500 hover:underline text-center pr-3">Edit</a>
                         <a data-modal-target="popup-modal" data-modal-toggle="popup-modal" href="#" className="font-medium text-orange-500 hover:underline text-center pl-3">Remove</a>
                     </td>
                 </tr>
