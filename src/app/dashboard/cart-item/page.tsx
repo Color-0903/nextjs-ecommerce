@@ -1,4 +1,3 @@
-import { ProductTable } from "@/components/tables/product";
 import Layout from "@/components/layouts";
 import UserSideBar from "@/components/sideBar/user-sidebar";
 import { StepperTable } from "@/components/tables/stepper-table";
