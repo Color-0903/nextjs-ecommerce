@@ -21,12 +21,7 @@ export default function Layout({ children }: Readonly<{ children: React.ReactNod
                 pathname.includes('dashboard') ? <UserLayout> {children} </UserLayout> : <HomeLayout> {children} </HomeLayout>
             }
             <ConfirmModal />
-            {/* <Spinner isLoading={true} children={<div>ok</div>} /> */}
-            <NofificationWrap >
-                <Nofification type='toast-success' content='Phạm Trường Tân' />
-                <Nofification type='toast-danger' content='Phạm Trường Tân danger' />
-                <Nofification type='toast-warning' content='Phạm Trường Tân warning' />
-            </NofificationWrap>
+          
         </>
     )
 }

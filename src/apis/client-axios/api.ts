@@ -213,6 +213,19 @@ export type CreateOrderDtoStatusEnum = typeof CreateOrderDtoStatusEnum[keyof typ
 /**
  * 
  * @export
+ * @interface CreateOtpDto
+ */
+export interface CreateOtpDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOtpDto
+     */
+    'identifier': string;
+}
+/**
+ * 
+ * @export
  * @interface CreateProductDto
  */
 export interface CreateProductDto {
@@ -382,6 +395,25 @@ export interface DeleteFileDtoUpdateFor {
      * @memberof DeleteFileDtoUpdateFor
      */
     'assets'?: Array<object>;
+}
+/**
+ * 
+ * @export
+ * @interface FilterOtpDto
+ */
+export interface FilterOtpDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof FilterOtpDto
+     */
+    'identifier': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof FilterOtpDto
+     */
+    'code': string;
 }
 /**
  * 
@@ -2892,6 +2924,184 @@ export class OrderApi extends BaseAPI {
      */
     public orderControllerUpdate(id: string, updateOrderDto: UpdateOrderDto, options?: AxiosRequestConfig) {
         return OrderApiFp(this.configuration).orderControllerUpdate(id, updateOrderDto, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
+ * OtpApi - axios parameter creator
+ * @export
+ */
+export const OtpApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {CreateOtpDto} createOtpDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        otpControllerSendOtp: async (createOtpDto: CreateOtpDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createOtpDto' is not null or undefined
+            assertParamExists('otpControllerSendOtp', 'createOtpDto', createOtpDto)
+            const localVarPath = `/otp/send-otp`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(createOtpDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {FilterOtpDto} filterOtpDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        otpControllerVerifyOtp: async (filterOtpDto: FilterOtpDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'filterOtpDto' is not null or undefined
+            assertParamExists('otpControllerVerifyOtp', 'filterOtpDto', filterOtpDto)
+            const localVarPath = `/otp/verify-otp`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(filterOtpDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * OtpApi - functional programming interface
+ * @export
+ */
+export const OtpApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = OtpApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {CreateOtpDto} createOtpDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async otpControllerSendOtp(createOtpDto: CreateOtpDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.otpControllerSendOtp(createOtpDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {FilterOtpDto} filterOtpDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async otpControllerVerifyOtp(filterOtpDto: FilterOtpDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.otpControllerVerifyOtp(filterOtpDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * OtpApi - factory interface
+ * @export
+ */
+export const OtpApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = OtpApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {CreateOtpDto} createOtpDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        otpControllerSendOtp(createOtpDto: CreateOtpDto, options?: any): AxiosPromise<void> {
+            return localVarFp.otpControllerSendOtp(createOtpDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {FilterOtpDto} filterOtpDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        otpControllerVerifyOtp(filterOtpDto: FilterOtpDto, options?: any): AxiosPromise<void> {
+            return localVarFp.otpControllerVerifyOtp(filterOtpDto, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * OtpApi - object-oriented interface
+ * @export
+ * @class OtpApi
+ * @extends {BaseAPI}
+ */
+export class OtpApi extends BaseAPI {
+    /**
+     * 
+     * @param {CreateOtpDto} createOtpDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OtpApi
+     */
+    public otpControllerSendOtp(createOtpDto: CreateOtpDto, options?: AxiosRequestConfig) {
+        return OtpApiFp(this.configuration).otpControllerSendOtp(createOtpDto, options).then((request) => {
+            return request(this.axios, this.basePath);
+        });
+    }
+
+    /**
+     * 
+     * @param {FilterOtpDto} filterOtpDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof OtpApi
+     */
+    public otpControllerVerifyOtp(filterOtpDto: FilterOtpDto, options?: AxiosRequestConfig) {
+        return OtpApiFp(this.configuration).otpControllerVerifyOtp(filterOtpDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
