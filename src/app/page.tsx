@@ -1,3 +1,5 @@
+"use client";
+
 import HomeLayout from "@/components/layouts/home";
 import { HomeMenu } from "@/components/menu/home-menu";
 import { TopSearch } from "@/components/menu/top-search";

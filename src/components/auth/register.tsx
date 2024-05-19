@@ -4,12 +4,12 @@ import { CreateOtpDto, RegisterUserDto } from "@/apis/client-axios";
 import { Validates } from "@/utils/validate";
 import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import 'react-toastify/dist/ReactToastify.css';
 import Notification from "../notification";
 import Spinner from "../spinner";
 import { OtpConfirm } from "./otp-confirm";
-import { useRouter } from "next/navigation";
 export const RegisterForm = () => {
 
     const { push } = useRouter();
@@ -56,8 +56,8 @@ export const RegisterForm = () => {
     const { mutate: RegisterMutate, isPending: isPendingRegister } = useMutation({
         mutationFn: (dto: RegisterUserDto) => authUserApi.authUserControllerRegister(dto),
         onSuccess: (data: any) => {
-        push('/auth/login')
-        Notification('Đăng ký tài khoản thành công! Đăng nhập lại!', 'success')
+            push('/auth/login')
+            Notification('Đăng ký tài khoản thành công! Đăng nhập lại!', 'success')
         },
         onError: (error: any) => {
             Notification('Đã có lỗi xảy ra. không thể đăng ký tài khoản này!', 'error');
@@ -147,7 +147,7 @@ export const RegisterForm = () => {
                     </div>
                 </div>
             </div>
-            <OtpConfirm submitCode={submitCode} setSubmitCode={setSubmitCode} onFinish={onFinish} identifier={formik.values.email} type={'register'}/>
+            <OtpConfirm submitCode={submitCode} setSubmitCode={setSubmitCode} onFinish={onFinish} identifier={formik.values.email} type={'register'} />
         </section>
     </Spinner>
 }

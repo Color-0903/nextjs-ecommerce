@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { OtpConfirm } from "./otp-confirm";
 
 export const ForgotForm = () => {
 

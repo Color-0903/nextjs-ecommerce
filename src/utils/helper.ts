@@ -8,3 +8,11 @@ export const getLabelBreadcrum: any = {
     "shipping": { label: "Đơn hàng", href: "/dashboard/shipping" },
     "profile": { label: "Thông tin cá nhân", href: "/dashboard/profile" },
 };
+
+
+export const Helper = {
+    
+    ViewSource: (value?: string) => value ? `${process.env.NEXT_APP_API_URL }/assets/get-by-path/${value}` : `${window.location.origin}/images/avatar/avatar.jpg`,
+    showVnd: (value: number) => Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(+value),
+    ViewProduct: (value?: string) => value ? `${process.env.NEXT_APP_API_URL }/assets/get-by-path/${value}` : `${window.location.origin}/images/product/image_default.png`,
+}
