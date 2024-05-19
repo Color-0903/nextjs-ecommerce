@@ -1,17 +1,20 @@
-import Layout from "@/components/layouts";
+import UserLayout from "@/components/layouts/user";
 import UserSideBar from "@/components/sideBar/user-sidebar";
+import Spinner from "@/components/spinner";
 
 function Notification() {
-    return <Layout >
-        <div>
-            <UserSideBar />
-            <div className="p-4 md:ml-64">
-                <div className="p-4 border border-gray-200 shadow-md rounded-lg dark:border-gray-700">
-                    <div>Notification</div>
+    return <Spinner>
+        <UserLayout>
+            <div>
+                <UserSideBar />
+                <div className="p-4 md:ml-64">
+                    <div className="p-4 border border-gray-200 shadow-md rounded-lg dark:border-gray-700">
+                        <div>Notification</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </Layout>
+        </UserLayout>
+    </Spinner>
 }
 
 export default Notification;

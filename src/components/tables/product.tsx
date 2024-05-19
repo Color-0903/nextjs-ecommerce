@@ -17,7 +17,7 @@ export const ProductTable = () => {
                     </svg>
                     Last 30 days
                     <svg className="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4" />
                     </svg>
                 </button>
                 <div id="dropdownRadio" className="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="top" style={{ position: 'absolute', inset: 'auto auto 0px 0px', margin: '0px', transform: 'translate3d(522.5px, 3847.5px, 0px)' }}>
@@ -173,7 +173,7 @@ export const ProductTable = () => {
              
         </div>
         <hr className="h-px mt-12 mb-8 bg-gray-200 border-0 dark:bg-gray-700"></hr>
-        <Pagination />
+        {/* <Pagination /> */}
     </div>
 
 }

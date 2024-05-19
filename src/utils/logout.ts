@@ -4,5 +4,5 @@ export const logOut = () => {
 };
 
 export const redirectToSignIn = () => { 
-    window.location.href = '/signin';
+    window.location.href = '/auth/login';
 };

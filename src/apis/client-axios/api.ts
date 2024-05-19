@@ -222,6 +222,12 @@ export interface CreateOtpDto {
      * @memberof CreateOtpDto
      */
     'identifier': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateOtpDto
+     */
+    'type': string;
 }
 /**
  * 
@@ -583,6 +589,25 @@ export interface ProductControllerGetAll200ResponseAllOf {
      * @memberof ProductControllerGetAll200ResponseAllOf
      */
     'content'?: Array<object>;
+}
+/**
+ * 
+ * @export
+ * @interface RegisterUserDto
+ */
+export interface RegisterUserDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof RegisterUserDto
+     */
+    'identifier': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RegisterUserDto
+     */
+    'password': string;
 }
 /**
  * 
@@ -1531,10 +1556,13 @@ export const AuthUserApiAxiosParamCreator = function (configuration?: Configurat
         /**
          * 
          * @summary Register
+         * @param {RegisterUserDto} registerUserDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authUserControllerUserRegister: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        authUserControllerRegister: async (registerUserDto: RegisterUserDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'registerUserDto' is not null or undefined
+            assertParamExists('authUserControllerRegister', 'registerUserDto', registerUserDto)
             const localVarPath = `/auth-user/register`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1543,7 +1571,7 @@ export const AuthUserApiAxiosParamCreator = function (configuration?: Configurat
                 baseOptions = configuration.baseOptions;
             }
 
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
@@ -1553,9 +1581,12 @@ export const AuthUserApiAxiosParamCreator = function (configuration?: Configurat
 
 
     
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(registerUserDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1596,11 +1627,12 @@ export const AuthUserApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Register
+         * @param {RegisterUserDto} registerUserDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authUserControllerUserRegister(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.authUserControllerUserRegister(options);
+        async authUserControllerRegister(registerUserDto: RegisterUserDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authUserControllerRegister(registerUserDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1635,11 +1667,12 @@ export const AuthUserApiFactory = function (configuration?: Configuration, baseP
         /**
          * 
          * @summary Register
+         * @param {RegisterUserDto} registerUserDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authUserControllerUserRegister(options?: any): AxiosPromise<void> {
-            return localVarFp.authUserControllerUserRegister(options).then((request) => request(axios, basePath));
+        authUserControllerRegister(registerUserDto: RegisterUserDto, options?: any): AxiosPromise<void> {
+            return localVarFp.authUserControllerRegister(registerUserDto, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -1677,12 +1710,13 @@ export class AuthUserApi extends BaseAPI {
     /**
      * 
      * @summary Register
+     * @param {RegisterUserDto} registerUserDto 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthUserApi
      */
-    public authUserControllerUserRegister(options?: AxiosRequestConfig) {
-        return AuthUserApiFp(this.configuration).authUserControllerUserRegister(options).then((request) => request(this.axios, this.basePath));
+    public authUserControllerRegister(registerUserDto: RegisterUserDto, options?: AxiosRequestConfig) {
+        return AuthUserApiFp(this.configuration).authUserControllerRegister(registerUserDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -3088,9 +3122,7 @@ export class OtpApi extends BaseAPI {
      * @memberof OtpApi
      */
     public otpControllerSendOtp(createOtpDto: CreateOtpDto, options?: AxiosRequestConfig) {
-        return OtpApiFp(this.configuration).otpControllerSendOtp(createOtpDto, options).then((request) => {
-            return request(this.axios, this.basePath);
-        });
+        return OtpApiFp(this.configuration).otpControllerSendOtp(createOtpDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

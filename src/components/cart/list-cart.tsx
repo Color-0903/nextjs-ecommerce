@@ -15,7 +15,7 @@ export const LisCart = (params: CartInterface) => {
                         <h2 className="py-3 p text-2xl font-medium text-gray-900 dark:text-white tracking-wide  border-b-4 border-orange-500 w-fit">Giỏ hàng </h2>
                         <button onClick={() => setIsShowCart(false)} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="default-modal">
                             <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
                             <span className="sr-only">Close modal</span>
                         </button>
@@ -34,7 +34,7 @@ export const LisCart = (params: CartInterface) => {
                                             cx="17" cy="17" r="17" fill="" />
                                         <path className="stroke-red-500 transition-all duration-500 group-hover:stroke-white"
                                             d="M14.1673 13.5997V12.5923C14.1673 11.8968 14.7311 11.333 15.4266 11.333H18.5747C19.2702 11.333 19.834 11.8968 19.834 12.5923V13.5997M19.834 13.5997C19.834 13.5997 14.6534 13.5997 11.334 13.5997C6.90804 13.5998 27.0933 13.5998 22.6673 13.5997C21.5608 13.5997 19.834 13.5997 19.834 13.5997ZM12.4673 13.5997H21.534V18.8886C21.534 20.6695 21.534 21.5599 20.9807 22.1131C20.4275 22.6664 19.5371 22.6664 17.7562 22.6664H16.2451C14.4642 22.6664 13.5738 22.6664 13.0206 22.1131C12.4673 21.5599 12.4673 20.6695 12.4673 18.8886V13.5997Z"
-                                            stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                                            stroke="#EF4444" strokeWidth="1.6" strokeLinecap="round" />
                                     </svg>
                                 </button>
                                 <p className="font-normal text-base leading-7 text-gray-500 mb-6">
@@ -70,13 +70,13 @@ export const LisCart = (params: CartInterface) => {
                                             <div className="relative flex items-center max-w-48 mt-1">
                                                 <button type="button" id="decrement-button-0" data-input-counter-decrement="quantity9-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
                                                     </svg>
                                                 </button>
                                                 <input type="text" id="quantity9-input" data-input-counter data-input-counter-min="1" data-input-counter-max="50" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="999" value="1" required />
                                                 <button type="button" id="increment-button-0" data-input-counter-increment="quantity9-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -103,7 +103,7 @@ export const LisCart = (params: CartInterface) => {
                                                 cx="17" cy="17" r="17" fill="" />
                                             <path className="stroke-red-500 transition-all duration-500 group-hover:stroke-white"
                                                 d="M14.1673 13.5997V12.5923C14.1673 11.8968 14.7311 11.333 15.4266 11.333H18.5747C19.2702 11.333 19.834 11.8968 19.834 12.5923V13.5997M19.834 13.5997C19.834 13.5997 14.6534 13.5997 11.334 13.5997C6.90804 13.5998 27.0933 13.5998 22.6673 13.5997C21.5608 13.5997 19.834 13.5997 19.834 13.5997ZM12.4673 13.5997H21.534V18.8886C21.534 20.6695 21.534 21.5599 20.9807 22.1131C20.4275 22.6664 19.5371 22.6664 17.7562 22.6664H16.2451C14.4642 22.6664 13.5738 22.6664 13.0206 22.1131C12.4673 21.5599 12.4673 20.6695 12.4673 18.8886V13.5997Z"
-                                                stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                                                stroke="#EF4444" strokeWidth="1.6" strokeLinecap="round" />
                                         </svg>
                                     </button>
                                 </div>
@@ -118,13 +118,13 @@ export const LisCart = (params: CartInterface) => {
                                             <div className="relative flex items-center max-w-48 mt-1">
                                                 <button type="button" id="decrement-button-0" data-input-counter-decrement="quantity-1-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
                                                     </svg>
                                                 </button>
                                                 <input type="text" id="quantity-1-input" data-input-counter data-input-counter-min="1" data-input-counter-max="50" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="999" value="1" required />
                                                 <button type="button" id="increment-button-0" data-input-counter-increment="quantity-1-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -149,7 +149,7 @@ export const LisCart = (params: CartInterface) => {
                                                 cx="17" cy="17" r="17" fill="" />
                                             <path className="stroke-red-500 transition-all duration-500 group-hover:stroke-white"
                                                 d="M14.1673 13.5997V12.5923C14.1673 11.8968 14.7311 11.333 15.4266 11.333H18.5747C19.2702 11.333 19.834 11.8968 19.834 12.5923V13.5997M19.834 13.5997C19.834 13.5997 14.6534 13.5997 11.334 13.5997C6.90804 13.5998 27.0933 13.5998 22.6673 13.5997C21.5608 13.5997 19.834 13.5997 19.834 13.5997ZM12.4673 13.5997H21.534V18.8886C21.534 20.6695 21.534 21.5599 20.9807 22.1131C20.4275 22.6664 19.5371 22.6664 17.7562 22.6664H16.2451C14.4642 22.6664 13.5738 22.6664 13.0206 22.1131C12.4673 21.5599 12.4673 20.6695 12.4673 18.8886V13.5997Z"
-                                                stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                                                stroke="#EF4444" strokeWidth="1.6" strokeLinecap="round" />
                                         </svg>
                                     </button>
                                 </div>
@@ -164,13 +164,13 @@ export const LisCart = (params: CartInterface) => {
                                             <div className="relative flex items-center max-w-48 mt-1">
                                                 <button type="button" id="decrement-button-0" data-input-counter-decrement="quantity-1-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
                                                     </svg>
                                                 </button>
                                                 <input type="text" id="quantity-1-input" data-input-counter data-input-counter-min="1" data-input-counter-max="50" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="999" value="1" required />
                                                 <button type="button" id="increment-button-0" data-input-counter-increment="quantity-1-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -195,7 +195,7 @@ export const LisCart = (params: CartInterface) => {
                                                 cx="17" cy="17" r="17" fill="" />
                                             <path className="stroke-red-500 transition-all duration-500 group-hover:stroke-white"
                                                 d="M14.1673 13.5997V12.5923C14.1673 11.8968 14.7311 11.333 15.4266 11.333H18.5747C19.2702 11.333 19.834 11.8968 19.834 12.5923V13.5997M19.834 13.5997C19.834 13.5997 14.6534 13.5997 11.334 13.5997C6.90804 13.5998 27.0933 13.5998 22.6673 13.5997C21.5608 13.5997 19.834 13.5997 19.834 13.5997ZM12.4673 13.5997H21.534V18.8886C21.534 20.6695 21.534 21.5599 20.9807 22.1131C20.4275 22.6664 19.5371 22.6664 17.7562 22.6664H16.2451C14.4642 22.6664 13.5738 22.6664 13.0206 22.1131C12.4673 21.5599 12.4673 20.6695 12.4673 18.8886V13.5997Z"
-                                                stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                                                stroke="#EF4444" strokeWidth="1.6" strokeLinecap="round" />
                                         </svg>
                                     </button>
                                 </div>
@@ -210,13 +210,13 @@ export const LisCart = (params: CartInterface) => {
                                             <div className="relative flex items-center max-w-48 mt-1">
                                                 <button type="button" id="decrement-button-0" data-input-counter-decrement="quantity-1-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16" />
                                                     </svg>
                                                 </button>
                                                 <input type="text" id="quantity-1-input" data-input-counter data-input-counter-min="1" data-input-counter-max="50" aria-describedby="helper-text-explanation" className="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-orange-500 focus:border-orange-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-orange-500 dark:focus:border-orange-500" placeholder="999" value="1" required />
                                                 <button type="button" id="increment-button-0" data-input-counter-increment="quantity-1-input" className="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg className="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                        <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 1v16M1 9h16" />
                                                     </svg>
                                                 </button>
                                             </div>
@@ -241,7 +241,7 @@ export const LisCart = (params: CartInterface) => {
                                                 cx="17" cy="17" r="17" fill="" />
                                             <path className="stroke-red-500 transition-all duration-500 group-hover:stroke-white"
                                                 d="M14.1673 13.5997V12.5923C14.1673 11.8968 14.7311 11.333 15.4266 11.333H18.5747C19.2702 11.333 19.834 11.8968 19.834 12.5923V13.5997M19.834 13.5997C19.834 13.5997 14.6534 13.5997 11.334 13.5997C6.90804 13.5998 27.0933 13.5998 22.6673 13.5997C21.5608 13.5997 19.834 13.5997 19.834 13.5997ZM12.4673 13.5997H21.534V18.8886C21.534 20.6695 21.534 21.5599 20.9807 22.1131C20.4275 22.6664 19.5371 22.6664 17.7562 22.6664H16.2451C14.4642 22.6664 13.5738 22.6664 13.0206 22.1131C12.4673 21.5599 12.4673 20.6695 12.4673 18.8886V13.5997Z"
-                                                stroke="#EF4444" stroke-width="1.6" stroke-linecap="round" />
+                                                stroke="#EF4444" strokeWidth="1.6" strokeLinecap="round" />
                                         </svg>
                                     </button>
                                 </div>
@@ -256,8 +256,8 @@ export const LisCart = (params: CartInterface) => {
                                             <svg className="stroke-gray-900 transition-all duration-500 group-hover:stroke-black"
                                                 width="18" height="19" viewBox="0 0 18 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M4.5 9.5H13.5" stroke="" stroke-width="1.6" stroke-linecap="round"
-                                                    stroke-linejoin="round" />
+                                                <path d="M4.5 9.5H13.5" stroke="" strokeWidth="1.6" strokeLinecap="round"
+                                                    strokeLinejoin="round" />
                                             </svg>
                                         </button>
                                         <input type="text" id="number"
@@ -268,8 +268,8 @@ export const LisCart = (params: CartInterface) => {
                                             <svg className="stroke-gray-900 transition-all duration-500 group-hover:stroke-black"
                                                 width="18" height="19" viewBox="0 0 18 19" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M3.75 9.5H14.25M9 14.75V4.25" stroke="" stroke-width="1.6"
-                                                    stroke-linecap="round" stroke-linejoin="round" />
+                                                <path d="M3.75 9.5H14.25M9 14.75V4.25" stroke="" strokeWidth="1.6"
+                                                    strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </button>
                                     </div>

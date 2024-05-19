@@ -3,7 +3,7 @@ export const OrderStepper = () => {
         <li className="flex min-w-32 relative w-full items-center  dark:text-orange-500 after:content-[''] after:w-full after:border-b after:border-orange-500 after:border-4 after:inline-block dark:after:border-orange-500">
             <span className="flex items-center justify-center md:w-16 md:h-16 w-12 h-12 cursor-pointer hover:scale-105 hover:opacity-90 bg-orange-500 rounded-full lg:h-18 lg:w-18 dark:bg-orange-500 shrink-0">
                 <svg className="w-4 h-4 text-white md:w-6 md:h-6 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5" />
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5" />
                 </svg>
                 <span className="absolute font-bold text-orange-500 text-nowrap" style={{ bottom: '-25px' }}>Đặt hàng</span>
             </span>
@@ -19,7 +19,7 @@ export const OrderStepper = () => {
         <li className="flex min-w-32 relative w-full items-center text-white dark:text-orange-500 after:content-[''] after:w-full after:border-b after:border-orange-500 after:border-4 after:inline-block dark:after:border-orange-500">
             <span className="flex items-center justify-center md:w-16 md:h-16 w-12 h-12 cursor-pointer hover:scale-105 hover:opacity-90 bg-orange-500 rounded-full lg:h-18 lg:w-18 dark:bg-gray-700 shrink-0">
                 <svg className="w-4 h-4 text-white md:w-6 md:h-6 dark:text-gray-100" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 14 3-3m-3 3 3 3m-3-3h16v-3m2-7-3 3m3-3-3-3m3 3H3v3" />
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 14 3-3m-3 3 3 3m-3-3h16v-3m2-7-3 3m3-3-3-3m3 3H3v3" />
                 </svg>
                 <span className="absolute font-bold text-orange-500 text-nowrap" style={{ bottom: '-25px' }}>Giao hàng</span>
             </span>

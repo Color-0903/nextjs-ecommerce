@@ -1,4 +1,6 @@
 
+import ToastProvider from "@/components/notification/toasProvider"
+import AppProvider from "."
 import "../styles/globals.css"
 
 export const metadata = {
@@ -14,7 +16,13 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className="hihihi">{children}</body>
+      <body>
+        <AppProvider>
+          <ToastProvider>
+            {children}
+          </ToastProvider>
+        </AppProvider>
+      </body>
     </html>
   )
 }

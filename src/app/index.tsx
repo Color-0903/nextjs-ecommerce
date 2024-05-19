@@ -1,16 +1,19 @@
+"use client";
 import '@/styles/globals.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-const queryClient = new QueryClient();
+import { RecoilRoot } from 'recoil';
 
-
-export default function App({
+export default function AppProvider({
     children,
 }: {
     children: React.ReactNode
 }) {
+    const queryClient = new QueryClient();
     return (
-        <QueryClientProvider client={queryClient}>
-            {children}
-        </QueryClientProvider>
+        <RecoilRoot>
+            <QueryClientProvider client={queryClient}>
+                {children}
+            </QueryClientProvider>
+        </RecoilRoot>
     );
 }

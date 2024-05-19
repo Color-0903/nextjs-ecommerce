@@ -1,13 +1,18 @@
+'use client'
 import { authUserApi, otpApi } from "@/apis";
-import { CreateOtpDto } from "@/apis/client-axios";
+import { CreateOtpDto, RegisterUserDto } from "@/apis/client-axios";
 import { Validates } from "@/utils/validate";
 import { useMutation } from "@tanstack/react-query";
 import { useFormik } from "formik";
 import { useState } from "react";
-import Nofification from "../notification";
+import 'react-toastify/dist/ReactToastify.css';
+import Notification from "../notification";
 import Spinner from "../spinner";
 import { OtpConfirm } from "./otp-confirm";
+import { useRouter } from "next/navigation";
 export const RegisterForm = () => {
+
+    const { push } = useRouter();
     const [toggle, setToggle] = useState({ password: false, confirm: false });
     const [submitCode, setSubmitCode] = useState(false);
     const formik = useFormik({
@@ -33,8 +38,7 @@ export const RegisterForm = () => {
             return errors;
         },
         onSubmit: (values) => {
-            mutate({ identifier: values?.email });
-            setSubmitCode(true);
+            mutate({ identifier: values?.email, type: 'register' });
         },
     });
 
@@ -42,28 +46,29 @@ export const RegisterForm = () => {
     const { mutate, isPending } = useMutation({
         mutationFn: (dto: CreateOtpDto) => otpApi.otpControllerSendOtp(dto),
         onSuccess: (data: any) => {
-            return <Nofification type='toast-success' content='Đăng ký tài khoản thành công!' />
+            setSubmitCode(true);
         },
-        onError: (error: any) => {
-            console.log(error);
+        onError: async (error: any) => {
+            Notification('Không thể đăng ký email này. Vui lòng thử lại!', 'error');
+
         },
     })
     const { mutate: RegisterMutate, isPending: isPendingRegister } = useMutation({
-        mutationFn: (dto: CreateOtpDto) => authUserApi.authUserControllerUserRegister(),
+        mutationFn: (dto: RegisterUserDto) => authUserApi.authUserControllerRegister(dto),
         onSuccess: (data: any) => {
-            console.log(data);
-            return <Nofification type='toast-success' content='Đăng ký tài khoản thành công!' />
+        push('/auth/login')
+        Notification('Đăng ký tài khoản thành công! Đăng nhập lại!', 'success')
         },
         onError: (error: any) => {
-            console.log(error);
+            Notification('Đã có lỗi xảy ra. không thể đăng ký tài khoản này!', 'error');
         },
     })
 
     const onFinish = () => {
-        console.log('onFinish')
+        RegisterMutate({ identifier: formik.values.email, password: formik.values.password })
     }
 
-    return <Spinner isLoading={isPending}>
+    return <Spinner isLoading={isPending || isPendingRegister}>
         <section className="bg-gray-50 dark:bg-gray-900">
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto h-screen lg:py-0">
                 <div className="w-full bg-white rounded-lg border shadow-xl dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -142,7 +147,7 @@ export const RegisterForm = () => {
                     </div>
                 </div>
             </div>
-            <OtpConfirm submitCode={submitCode} setSubmitCode={setSubmitCode} onFinish={onFinish} identifier={formik.values.email} />
+            <OtpConfirm submitCode={submitCode} setSubmitCode={setSubmitCode} onFinish={onFinish} identifier={formik.values.email} type={'register'}/>
         </section>
     </Spinner>
 }
