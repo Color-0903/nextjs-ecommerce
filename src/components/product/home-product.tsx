@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 
 export const HomeProduct = () => {
     const router = useRouter();
-
     const [page, setPage] = useState(1);
     const [size, setSize] = useState(10);
     const [fullTextSearch, setFullTextSearch] = useState(undefined);
@@ -18,11 +17,11 @@ export const HomeProduct = () => {
     const { data: products, isPending: isPendingProduct } = useQuery({
         queryKey: [QUERY_KEY.PRODUCT, { page, size, fullTextSearch }],
         queryFn: () => productApi.productControllerGetAll(page, size, undefined, fullTextSearch)
-    })
+    });
 
     const productItem = (product: any) => <div onClick={() => router.push(`/product/${product.id}`)} className="bg-white border border-gray-200 pb-4 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110duration-300 ... overflow-hidden">
         <div className="pb-3 relative">
-            <img className="mx-auto w-full h-60 rounded-t-lg" src={Helper.ViewProduct(product?.assets[0]?.source)} alt="" />
+            <img className="mx-auto w-full h-40 md:h-60 rounded-t-lg" src={Helper.ViewProduct(product?.assets[0]?.source)} alt="" />
             <span className="absolute rotate-45 bg-white text-orange-500 text-xs font-medium px-8 py-0.5 dark:bg-red-900 dark:text-red-300" style={{ top: '12px', right: '-20px' }}>{product?.sale_off}%</span>
         </div>
         <div className="px-2">
@@ -48,11 +47,11 @@ export const HomeProduct = () => {
     return <Spinner isLoading={isPendingProduct}>
         <div className="mt-8">
             <div className="border text-center">
-                <p className="py-3 text-2xl font-medium text-gray-900 dark:text-white tracking-wide border-b-4 border-orange-500">Sản phẩm</p>
+                <p className="overflow-x-auto py-3 text-2xl font-medium text-gray-900 dark:text-white tracking-wide border-b-4 border-orange-500">Sản phẩm</p>
             </div>
             {
                 !!products?.data?.content?.length ?
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4 ">
+                    <div className="w-fit grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-4 ">
                         {products?.data?.content?.map(product => productItem(product))}
                     </div>
                     :
