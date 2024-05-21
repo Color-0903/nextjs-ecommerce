@@ -14,5 +14,5 @@ export const Helper = {
     ViewSource: (value?: string) => value ? `${process.env.NEXT_APP_API_URL }/assets/get-by-path/${value}` : `${window.location.origin}/images/avatar/avatar.jpg`,
     showVnd: (value: number) => Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(+value),
     ViewProduct: (value?: string) => value ? `${process.env.NEXT_APP_API_URL }/assets/get-by-path/${value}` : Helper.ViewDefauleProduct(),
-    ViewDefauleProduct: () => `${window.location.origin}/images/product/image_default.png`,
+    ViewDefauleProduct: () => `${process.env.NEXT_APP_URL}/images/product/image_default.png`,
 }
