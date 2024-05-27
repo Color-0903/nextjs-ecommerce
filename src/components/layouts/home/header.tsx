@@ -10,29 +10,35 @@ import { useState } from "react";
 import { useRecoilState } from "recoil";
 
 export default function HomeHeader() {
+    const { push } = useRouter();
     const [isShowCart, setIsShowCart] = useState(false);
     const [auth, setAuth] = useRecoilState<any>(AuthRecoil);
-    const { push } = useRouter();
 
     const handleLogout = () => {
         setAuth('');
         localStorage.removeItem("token");
         push('auth/login');
     }
+
+
     return (
         <header className="fixed top-0 left-0 right-0 z-50">
             <nav className="bg-gray-50 border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
                 <div className=" mx-auto max-w-screen-xl">
                     <div className="flex items-center justify-between mt-5">
-                        <Breadcrum />
+                        <div>
+                            <Breadcrum />
+                        </div>
                         <div className="flex items-center lg:order-2">
                             {
                                 !auth ?
-                                    <div className="grid grid-cols-2 divide-x">
-                                        <a href="/auth/login" className="text-orange-500 dark:text-white hover:text-orange-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-1 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Đăng nhập</a>
-
-                                        <a href="/auth/register" className="text-orange-500 dark:text-white hover:text-orange-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-1 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Đăng ký</a>
-                                    </div>
+                                    <>
+                                        <div className=" hidden md:grid grid-cols-2 divide-x">
+                                            <a href="/auth/login" className="text-orange-500 dark:text-white hover:text-orange-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-1 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Đăng nhập</a>
+                                            <a href="/auth/register" className="text-orange-500 dark:text-white hover:text-orange-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-2 py-1 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Đăng ký</a>
+                                        </div>
+                                        <a href="/auth/login" className="block md:hidden text-orange-500 dark:text-white hover:text-orange-400 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm ">Đăng nhập</a>
+                                    </>
                                     :
                                     <div className="flex items-center lg:order-2">
                                         <div className="hidden md:block">
@@ -88,7 +94,7 @@ export default function HomeHeader() {
                             <CardIcon />
                         </div>
 
-                        <button onClick={() => setIsShowCart(true)} type="button" className="md:hidden fixed bottom-20 right-1  shadow-xl text-white bg-orange-500 hover:bg-orange-400 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium rounded-full text-sm p-3 text-center mb-2 dark:bg-orange-500 dark:hover:bg-orange-500 dark:focus:ring-purple-900">
+                        <button onClick={() => setIsShowCart(true)} type="button" className="md:hidden fixed bottom-20 right-2 rounded-full  shadow-xl text-white bg-orange-500 hover:bg-orange-400 focus:outline-none focus:ring-4 focus:ring-purple-300 font-medium text-sm text-center mb-2 dark:bg-orange-500 dark:hover:bg-orange-500 dark:focus:ring-purple-900">
                             <CardIcon />
                         </button>
                     </div>
@@ -96,7 +102,7 @@ export default function HomeHeader() {
                 </div>
             </nav>
 
-            <LisCart isShowCart={isShowCart} setIsShowCart={setIsShowCart} />
+            {isShowCart && <LisCart isShowCart={isShowCart} setIsShowCart={setIsShowCart} />}
         </header>
     )
 }

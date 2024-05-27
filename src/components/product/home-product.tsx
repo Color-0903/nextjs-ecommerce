@@ -4,9 +4,9 @@ import { Pagination } from "@/components/pagination/pagination";
 import { QUERY_KEY } from "@/utils/constant";
 import { Helper } from "@/utils/helper";
 import { useQuery } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Spinner from "../spinner";
-import { useRouter } from "next/navigation";
 
 export const HomeProduct = () => {
     const router = useRouter();
@@ -27,16 +27,23 @@ export const HomeProduct = () => {
         <div className="px-2">
             <p className="font-normal text-gray-700 dark:text-gray-400 text-left truncate ...">{product?.name}</p>
             <p className="font-normal text-gray-500 dark:text-gray-400 text-left truncate ...">{product?.description}</p>
-            <div className="hidden md:flex justify-between mt-6">
+            <div className="flex justify-end items-center gap-1 mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                </svg>
+                <span className="text-orange-500">{product?.view}</span>
+            </div>
+            <div className="hidden md:flex justify-between mt-2">
                 <span className="bg-red-100 text-orange-500 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{product?.status ? 'Còn hàng' : 'Hết hàng'}</span>
                 <span className="text-orange-500">{Helper.showVnd(product?.price_view)}</span>
             </div>
 
-            <div className="md:hidden">
-                <div className="mt-1">
-                    <span className="bg-red-100 text-orange-500 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">{product?.status ? 'Còn hàng' : 'Hết hàng'}</span>
+            <div className="md:hidden flex items-end justify-between mt-2">
+                <div>
+                    <span className="text-black text-sm font-medium ">Giá: </span>
                 </div>
-                <div className="flex justify-end mt-3">
+                <div >
                     <span className="text-orange-500">{Helper.showVnd(product?.price_view)}</span>
                 </div>
             </div>

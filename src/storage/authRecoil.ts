@@ -2,14 +2,26 @@ import { atom, selector } from "recoil";
 
 // for read, write
 export const AuthRecoil = atom({
-    key: "authState", // unique ID (with respect to other atoms/selectors)
-    default: "", // default value (aka initial value),
+    key: "authState",
+    default: "",
+});
+
+export const CartRecoli = atom({
+    key: "CartRecoli",
+    default: [],
 });
 
 // for read
 export const AuthSelector = selector({
-    key: "AuthSelector", // unique ID (with respect to other atoms/selectors)
+    key: "AuthSelector",
     get: ({get}: any) => {
         return get(AuthRecoil);
+    },
+});
+
+export const CartSelector = selector({
+    key: "CartSelector",
+    get: ({get}: any) => {
+        return get(CartRecoli).length;
     },
 });

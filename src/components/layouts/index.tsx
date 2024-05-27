@@ -1,6 +1,6 @@
 "use client"
 import { authUserApi } from '@/apis';
-import { AuthRecoil } from '@/storage/authRecoil';
+import { AuthRecoil, CartRecoli } from '@/storage/authRecoil';
 import { setToken } from '@/utils/localStorage';
 import { useMutation } from '@tanstack/react-query';
 import { initFlowbite } from 'flowbite';
@@ -9,12 +9,16 @@ import { useRecoilState } from 'recoil';
 
 export default function Layout({ children }: Readonly<{ children: React.ReactNode }>) {
     const [auth, setAuth] = useRecoilState(AuthRecoil);
+    const [cart, setCart] = useRecoilState(CartRecoli);
+
     useEffect(() => {
         const token = localStorage.getItem('token');
         if (!!token && !auth) {
             setToken(token)
             AuthMe();
         }
+        let carts = localStorage?.getItem('carts') ? JSON.parse(localStorage?.getItem('carts') || "") : [];
+        setCart(carts);
         initFlowbite();
     }, []);
 

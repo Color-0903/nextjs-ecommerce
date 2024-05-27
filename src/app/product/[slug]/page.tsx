@@ -6,16 +6,20 @@ import { TopSearch } from "@/components/menu/top-search";
 import Notification from "@/components/notification";
 import HomeSlider from "@/components/slider/home-slider";
 import Spinner from "@/components/spinner";
+import { CartRecoli } from "@/storage/authRecoil";
 import { QUERY_KEY } from "@/utils/constant";
+import { Helper } from "@/utils/helper";
 import { useQuery } from "@tanstack/react-query";
 import { notFound, useParams } from 'next/navigation';
 import { useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 
 function DetailProduct() {
     const params = useParams();
     const [colorSelect, setColorSelect] = useState<{ id: string, name?: string } | undefined>(undefined);
     const [sizeSelect, setSizeSelect] = useState<{ id: string, des?: string, name?: string } | undefined>(undefined);
     const [quantity, setQuantity] = useState<number>(1);
+    const [cart, setCart] = useRecoilState(CartRecoli);
 
     const { data: productById, isPending: isPending } = useQuery({
         queryKey: [QUERY_KEY.DETAIL_PRODUCT, params?.slug],
@@ -25,31 +29,35 @@ function DetailProduct() {
 
     useEffect(() => {
         if (!productById?.data && !isPending) notFound();
-    }, [productById])
+    }, [productById]) 
 
     const handleAddToCart = () => {
-        if (!colorSelect?.id || !sizeSelect?.id) return Notification('Vui lòng chọn kích thước và màu sắc!', 'error');
-        let carts = localStorage?.getItem('ca rts') ? JSON.parse(localStorage?.getItem('carts') || "") : null;
+        if ((!colorSelect?.id && !!productById?.data?.colors?.length) || (!sizeSelect?.id && !!productById?.data?.sizes?.length)) return Notification('Vui lòng chọn thông tin sản phẩm!', 'error');
+        let carts = localStorage?.getItem('carts') ? JSON.parse(localStorage?.getItem('carts') || "") : null;
         const cartItem = {
             id: params?.slug,
             quantity: quantity,
             size: sizeSelect?.name,
             color: colorSelect?.name,
+            name: productById?.data?.name ,
+            price: productById?.data?.price_view ,
             source: productById?.data?.assets[0]?.source
         }
         if (Array.isArray(carts)) {
             const findItem = carts.some(cart => cart.id === cartItem.id && cart.color === cartItem?.color && cart.size === cartItem?.size);
             if (findItem) {
-                const newcarts = carts.map(cart => {
+                const newCarts = carts.map(cart => {
                     return (cart.color === cartItem?.color && cart.size === cartItem?.size) ? { ...cart, quantity: +(+cart.quantity + +cartItem?.quantity) } : cart
                 });
-                localStorage.setItem('carts', JSON.stringify(newcarts));
-            } {
-                localStorage.setItem('carts', JSON.stringify([...carts, cartItem]));
+                carts = newCarts;
+            } else {
+                carts = [...carts, cartItem]
             }
-        } {
-            localStorage.setItem('carts', JSON.stringify([cartItem]))
+        } else {
+            carts = [cartItem];
         };
+        localStorage.setItem('carts', JSON.stringify(carts));
+        setCart(carts);
         return Notification('Sản phẩm đã được thêm vào giỏ hàng!', 'success');
     };
 
@@ -65,7 +73,7 @@ function DetailProduct() {
                     <section className="text-gray-700 body-font overflow-hidden bg-white">
                         <div className="">
                             <div className="mx-auto flex flex-wrap">
-                                <div className="lg:w-1/2 w-full object-cover object-center ">
+                                <div className="lg:w-1/3 w-full object-cover object-center ">
                                     <HomeSlider assets={productById?.data?.assets} />
                                 </div>
                                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -148,10 +156,14 @@ function DetailProduct() {
                                         </div>
                                     </div>
                                     <div className="flex flex-col mt-6">
-                                        <div className="flex justify-end">
-                                            <span className="text-orange-500">50.000đ</span>
+                                    <div className="flex justify-end">
+                                            <span className="text-gray-500 line-through">{ Helper.showVnd(productById?.data?.price_out) }</span>
                                         </div>
-                                        <div className="flex justify-end gap-3 mt-3">
+                                        <div className="flex justify-between">
+                                            <span className="text-black">Giá: </span>
+                                            <span className="text-orange-500">{ Helper.showVnd(productById?.data?.price_view) }</span>
+                                        </div>
+                                        <div className="flex justify-end gap-3 mt-4">
                                             <button onClick={handleAddToCart} type="button" className="flex items-center gap-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 min-w-40">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />

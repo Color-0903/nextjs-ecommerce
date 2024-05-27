@@ -1,6 +1,6 @@
 export const getLabelBreadcrum: any = {
     "product": { label: "Sản phẩm", href: "/product" },
-    "product/:slug": { label: "Chi tiết sản phẩm", href: "#" },
+    "product/:slug": { label: "Chi tiết", href: "#" },
     "dashboard": { label: "Tài khoản", href: "/dashboard" },
     "history-order": { label: "Lịch sử mua hàng", href: "/dashboard/history-order" },
     "cart-item": { label: "Giỏ hàng", href: "/dashboard/cart-item" },

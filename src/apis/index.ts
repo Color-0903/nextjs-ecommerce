@@ -4,6 +4,7 @@ import axios from "axios";
 import {
   AssetsApi,
   AuthUserApi,
+  BannerApi,
   CategoryApi,
   ColorApi,
   Configuration,
@@ -37,6 +38,7 @@ const productApi = new ProductApi(config, undefined, axiosInstance);
 const assetsApi = new AssetsApi(config, undefined, axiosInstance);
 const authUserApi = new AuthUserApi(config, undefined, axiosInstance);
 const otpApi = new OtpApi(config, undefined, axiosInstance);
+const bannerApi = new BannerApi(config, undefined, axiosInstance);
 
-export { assetsApi, authUserApi, categoryApi, colorApi, productApi, sizeApi, otpApi };
+export { assetsApi, authUserApi, categoryApi, colorApi, productApi, sizeApi, otpApi, bannerApi };
 
