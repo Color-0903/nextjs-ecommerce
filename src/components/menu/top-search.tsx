@@ -18,7 +18,7 @@ export const TopSearch = () => {
     });
 
     const productItem = (product: any) => {
-        return <div onClick={() => router.push(`/product/${product.id}`)} className="w-40 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  cursor-pointer">
+        return <div key={product?.id} onClick={() => router.push(`/product/${product.id}`)} className="w-40 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  cursor-pointer">
             <div className="py-3 px-4">
                 <img className="rounded-full mx-auto h-32" src={Helper?.ViewProduct(product?.assets[0]?.source)} alt="" />
             </div>

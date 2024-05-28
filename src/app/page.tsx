@@ -12,26 +12,12 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
 function Home() {
-  const [assets, setAssets] = useState<any>(undefined);
-  const { data, isPending } = useQuery({
-    queryKey: [QUERY_KEY.BANNER],
-    queryFn: () => bannerApi.bannerControllerGetAll(),
-  });
-  console.log(data?.data);
+ 
 
-  useEffect(() => {
-    if (Array.isArray(data?.data)) {
-      setAssets((data.data as any).map((item: any) => item.asset));
-    }
-  }, [data])
-
-  return <Spinner isLoading={isPending}>
+  return <Spinner>
     <HomeLayout>
       <div className="container mx-auto px-4">
-        {
-          !!assets && <HomeSlider assets={(assets as any)} />
-        }
-
+        <HomeSlider />
         <HomeMenu />
         <TopSearch />
         <HomeProduct />

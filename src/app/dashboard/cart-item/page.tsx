@@ -1,11 +1,11 @@
-import UserLayout from "@/components/layouts/user";
+import HomeLayout from "@/components/layouts/home";
 import UserSideBar from "@/components/sideBar/user-sidebar";
 import Spinner from "@/components/spinner";
 import { StepperTable } from "@/components/tables/stepper-table";
 
 const CartItem = () => {
     return <Spinner >
-        <UserLayout >
+        <HomeLayout >
             <div>
                 <UserSideBar />
                 <div className="p-4 md:ml-64">
@@ -66,7 +66,7 @@ const CartItem = () => {
                     </div>
                 </div>
             </div>
-        </UserLayout>
+        </HomeLayout>
     </Spinner>
 }
 

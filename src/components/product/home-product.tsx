@@ -19,8 +19,8 @@ export const HomeProduct = () => {
         queryFn: () => productApi.productControllerGetAll(page, size, undefined, fullTextSearch)
     });
 
-    const productItem = (product: any) => <div onClick={() => router.push(`/product/${product.id}`)} className="bg-white border border-gray-200 pb-4 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110duration-300 ... overflow-hidden">
-        <div className="pb-3 relative">
+    const productItem = (product: any) => <div key={product?.id} onClick={() => router.push(`/product/${product.id}`)} className="bg-white border border-gray-200 pb-4 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 cursor-pointer transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110duration-300 ... overflow-hidden">
+        <div key={product?.id} className="pb-3 relative">
             <img className="mx-auto w-full h-40 md:h-60 rounded-t-lg" src={Helper.ViewProduct(product?.assets[0]?.source)} alt="" />
             <span className="absolute rotate-45 bg-white text-orange-500 text-xs font-medium px-8 py-0.5 dark:bg-red-900 dark:text-red-300" style={{ top: '12px', right: '-20px' }}>{product?.sale_off}%</span>
         </div>
@@ -28,9 +28,9 @@ export const HomeProduct = () => {
             <p className="font-normal text-gray-700 dark:text-gray-400 text-left truncate ...">{product?.name}</p>
             <p className="font-normal text-gray-500 dark:text-gray-400 text-left truncate ...">{product?.description}</p>
             <div className="flex justify-end items-center gap-1 mt-4">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-4 h-4">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
                 <span className="text-orange-500">{product?.view}</span>
             </div>

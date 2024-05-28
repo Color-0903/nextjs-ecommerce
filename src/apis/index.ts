@@ -5,12 +5,15 @@ import {
   AssetsApi,
   AuthUserApi,
   BannerApi,
+  CadastralApi,
   CategoryApi,
   ColorApi,
   Configuration,
+  OrderApi,
   OtpApi,
   ProductApi,
-  SizeApi
+  SizeApi,
+  UsersApi
 } from "./client-axios";
 import { getToken } from "@/utils/localStorage";
 const config = new Configuration({
@@ -39,6 +42,9 @@ const assetsApi = new AssetsApi(config, undefined, axiosInstance);
 const authUserApi = new AuthUserApi(config, undefined, axiosInstance);
 const otpApi = new OtpApi(config, undefined, axiosInstance);
 const bannerApi = new BannerApi(config, undefined, axiosInstance);
+const orderApi = new OrderApi(config, undefined, axiosInstance);
+const cadastralApi = new CadastralApi(config, undefined, axiosInstance);
+const usersApi = new UsersApi(config, undefined, axiosInstance);
 
-export { assetsApi, authUserApi, categoryApi, colorApi, productApi, sizeApi, otpApi, bannerApi };
+export { assetsApi, authUserApi, categoryApi, colorApi, productApi, sizeApi, otpApi, bannerApi, orderApi, cadastralApi, usersApi };
 

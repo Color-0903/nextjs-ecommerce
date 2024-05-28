@@ -74,7 +74,7 @@ function DetailProduct() {
                         <div className="">
                             <div className="mx-auto flex flex-wrap">
                                 <div className="lg:w-1/3 w-full object-cover object-center ">
-                                    <HomeSlider assets={productById?.data?.assets} />
+                                    {/* <HomeSlider assets={productById?.data?.assets} /> */}
                                 </div>
                                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                                     <h2 className="text-sm title-font text-gray-500 tracking-widest">Color's</h2>
@@ -107,7 +107,7 @@ function DetailProduct() {
                                             <div className="flex gap-2 items-center mt-1 ml-4">
                                                 {
                                                     productById?.data?.colors?.map((color: any) => {
-                                                        return <div className="flex items-center ms-2 " onClick={() => setColorSelect({ id: color.id, name: color?.name })}>
+                                                        return <div key={color.id} className="flex items-center ms-2 " onClick={() => setColorSelect({ id: color.id, name: color?.name })}>
                                                             <input checked={color.id === colorSelect?.id} id={color?.id} type="radio" value="" name="color" className="shadow shadow-orange-400 w-5 h-5 bg-gray-100 border-gray-300 focus:ring-gray-300 dark:focus:ring-gray-300" style={{ color: color?.description }} />
                                                             <label htmlFor={color?.id} className="cursor-pointer ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{color?.name}</label>
                                                         </div>
@@ -127,7 +127,7 @@ function DetailProduct() {
                                             <div className="flex gap-2 items-center mt-1 ml-4">
                                                 {
                                                     productById?.data?.sizes?.map((size: any) => {
-                                                        return <button onClick={() => {
+                                                        return <button key={size.id} onClick={() => {
                                                             setSizeSelect({ id: size.id, des: size?.description, name: size?.name })
                                                         }} type="button" className={` hover:bg-orange-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 ${size.id === sizeSelect?.id ? 'text-white bg-orange-500' : 'text-orange-500 border-1 shadow shadow-orange-500'}`}>{size?.name}</button>
                                                     })

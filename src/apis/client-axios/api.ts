@@ -2027,6 +2027,244 @@ export class BannerApi extends BaseAPI {
 
 
 /**
+ * CadastralApi - axios parameter creator
+ * @export
+ */
+export const CadastralApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 
+         * @param {string} cityCode 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cadastralControllerGetDistrict: async (cityCode: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'cityCode' is not null or undefined
+            assertParamExists('cadastralControllerGetDistrict', 'cityCode', cityCode)
+            const localVarPath = `/cadastral/districts`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (cityCode !== undefined) {
+                localVarQueryParameter['cityCode'] = cityCode;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cadastralControllerGetProvince: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/cadastral/province`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
+         * @param {string} districtCode 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cadastralControllerGetWard: async (districtCode: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'districtCode' is not null or undefined
+            assertParamExists('cadastralControllerGetWard', 'districtCode', districtCode)
+            const localVarPath = `/cadastral/wards`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (districtCode !== undefined) {
+                localVarQueryParameter['districtCode'] = districtCode;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CadastralApi - functional programming interface
+ * @export
+ */
+export const CadastralApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CadastralApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 
+         * @param {string} cityCode 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async cadastralControllerGetDistrict(cityCode: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cadastralControllerGetDistrict(cityCode, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async cadastralControllerGetProvince(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cadastralControllerGetProvince(options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
+         * @param {string} districtCode 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async cadastralControllerGetWard(districtCode: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.cadastralControllerGetWard(districtCode, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+    }
+};
+
+/**
+ * CadastralApi - factory interface
+ * @export
+ */
+export const CadastralApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CadastralApiFp(configuration)
+    return {
+        /**
+         * 
+         * @param {string} cityCode 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cadastralControllerGetDistrict(cityCode: string, options?: any): AxiosPromise<void> {
+            return localVarFp.cadastralControllerGetDistrict(cityCode, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cadastralControllerGetProvince(options?: any): AxiosPromise<void> {
+            return localVarFp.cadastralControllerGetProvince(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @param {string} districtCode 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        cadastralControllerGetWard(districtCode: string, options?: any): AxiosPromise<void> {
+            return localVarFp.cadastralControllerGetWard(districtCode, options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * CadastralApi - object-oriented interface
+ * @export
+ * @class CadastralApi
+ * @extends {BaseAPI}
+ */
+export class CadastralApi extends BaseAPI {
+    /**
+     * 
+     * @param {string} cityCode 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CadastralApi
+     */
+    public cadastralControllerGetDistrict(cityCode: string, options?: AxiosRequestConfig) {
+        return CadastralApiFp(this.configuration).cadastralControllerGetDistrict(cityCode, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CadastralApi
+     */
+    public cadastralControllerGetProvince(options?: AxiosRequestConfig) {
+        return CadastralApiFp(this.configuration).cadastralControllerGetProvince(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @param {string} districtCode 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CadastralApi
+     */
+    public cadastralControllerGetWard(districtCode: string, options?: AxiosRequestConfig) {
+        return CadastralApiFp(this.configuration).cadastralControllerGetWard(districtCode, options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+/**
  * CategoryApi - axios parameter creator
  * @export
  */

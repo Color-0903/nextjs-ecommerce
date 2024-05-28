@@ -19,7 +19,7 @@ export const HomeMenu = () => {
 
     const categoriesItem = (cate: any) => {
         const toUpperCase = cate?.name.charAt(0).toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        return <div className="w-40 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  cursor-pointer">
+        return <div key={cate?.id} className="w-40 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700  cursor-pointer">
             <div className="py-3 px-4">
                 <button type="button" className="border-4 border-orange-500 text-white bg-gray-400 hover:bg-gray-400 focus:outline-none focus:ring-4 text-4xl  rounded-full h-32 w-32">{toUpperCase}</button>
             </div>

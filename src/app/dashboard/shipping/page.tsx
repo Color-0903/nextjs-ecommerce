@@ -1,4 +1,4 @@
-import UserLayout from "@/components/layouts/user";
+import HomeLayout from "@/components/layouts/home";
 import UserSideBar from "@/components/sideBar/user-sidebar";
 import Spinner from "@/components/spinner";
 import OrderStepper from "@/components/steppers/order-stepper";
@@ -6,7 +6,7 @@ import { StepperTable } from "@/components/tables/stepper-table";
 
 function Shipping() {
     return <Spinner>
-        <UserLayout>
+        <HomeLayout>
             <div>
                 <UserSideBar />
                 <div className="p-4 md:ml-64 h-full">
@@ -32,7 +32,7 @@ function Shipping() {
                     </div>
                 </div>
             </div>
-        </UserLayout>
+        </HomeLayout>
     </Spinner>
 }
 
