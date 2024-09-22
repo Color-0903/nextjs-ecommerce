@@ -1,32 +1,43 @@
-import { logOut } from "@/utils/logout";
+import {logOut} from "@/utils/logout";
 import axios from "axios";
 
 import {
-  AssetsApi,
-  AuthUserApi,
-  BannerApi,
-  CadastralApi,
-  CategoryApi,
-  ColorApi,
-  Configuration,
-  OrderApi,
-  OtpApi,
-  ProductApi,
-  SizeApi,
-  UsersApi
+    AssetsApi,
+    AuthUserApi,
+    BannerApi,
+    CadastralApi,
+    CategoryApi,
+    ColorApi,
+    Configuration,
+    OrderApi,
+    OtpApi,
+    ProductApi,
+    SizeApi,
+    UsersApi,
 } from "./client-axios";
-import { getToken } from "@/utils/localStorage";
+import {getToken} from "@/utils/localStorage";
+import {CustomHandleError} from "@/components/catch/error";
+
 const config = new Configuration({
     basePath: process.env.NEXT_APP_API_URL,
     accessToken: getToken() || undefined,
 });
 
 export const axiosInstance = axios.create();
+
+axiosInstance.interceptors.request.use((config) => {
+    const tokenFromLocalStorage = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${tokenFromLocalStorage}`;
+
+    return config;
+});
+
 axiosInstance.interceptors.response.use(
     (response) => {
         return response;
     },
     async (error) => {
+        CustomHandleError(error?.response?.data);
         if (error?.response?.status === 401) {
             // logOut();
         }
@@ -46,5 +57,16 @@ const orderApi = new OrderApi(config, undefined, axiosInstance);
 const cadastralApi = new CadastralApi(config, undefined, axiosInstance);
 const usersApi = new UsersApi(config, undefined, axiosInstance);
 
-export { assetsApi, authUserApi, categoryApi, colorApi, productApi, sizeApi, otpApi, bannerApi, orderApi, cadastralApi, usersApi };
-
+export {
+    assetsApi,
+    authUserApi,
+    categoryApi,
+    colorApi,
+    productApi,
+    sizeApi,
+    otpApi,
+    bannerApi,
+    orderApi,
+    cadastralApi,
+    usersApi,
+};

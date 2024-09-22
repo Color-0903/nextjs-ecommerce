@@ -1,11 +1,14 @@
 export const QUERY_KEY = {
-    PRODUCT: 'QUERY_PRODUCT',
-    TOP_SEARCH: 'QUERY_TOP_SEARCH',
-    DETAIL_PRODUCT: 'QUERY_DETAIL_PRODUCT',
-    CATEGORY: 'QUERY_CATEGORY',
-    BANNER: 'QUERY_BANNER',
-    PROFILE: 'QUERY_PROFILE',
-    PROFILE_PROVINCE: 'QUERY_PROFILE_PROVINCE',
-    PROFILE_DISTRICT: 'QUERY_PROFILE_DISTRICT',
-    PROFILE_WARD: 'QUERY_PROFILE_WARD',
-}
+    QUERY_ME: "QUERY_ME",
+    QUERY_PROFILE: "QUERY_PROFILE",
+};
+
+// export const OTP_TYPE = {
+//     register: 'register',
+//     forgot: 'forgot'
+// };
+
+export const CHANGE_PASSWORD_TYPE = {
+    update: 'update',
+    forgot: 'forgot'
+};

@@ -26,6 +26,123 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError } from './base';
 /**
  * 
  * @export
+ * @interface Asset
+ */
+export interface Asset {
+    /**
+     * 
+     * @type {string}
+     * @memberof Asset
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Asset
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Asset
+     */
+    'mimeType': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Asset
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Asset
+     */
+    'height': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Asset
+     */
+    'fileSize': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Asset
+     */
+    'source': string;
+    /**
+     * 
+     * @type {Array<Product>}
+     * @memberof Asset
+     */
+    'products': Array<Product>;
+}
+/**
+ * 
+ * @export
+ * @interface Banner
+ */
+export interface Banner {
+    /**
+     * 
+     * @type {string}
+     * @memberof Banner
+     */
+    'title': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Banner
+     */
+    'index': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Banner
+     */
+    'content': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Banner
+     */
+    'assetId': string;
+    /**
+     * 
+     * @type {Asset}
+     * @memberof Banner
+     */
+    'asset': Asset;
+}
+/**
+ * 
+ * @export
+ * @interface Category
+ */
+export interface Category {
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Category
+     */
+    'description': string;
+    /**
+     * 
+     * @type {Array<Product>}
+     * @memberof Category
+     */
+    'products': Array<Product>;
+}
+/**
+ * 
+ * @export
  * @interface CategoryControllerGetAll200Response
  */
 export interface CategoryControllerGetAll200Response {
@@ -49,10 +166,10 @@ export interface CategoryControllerGetAll200Response {
     'size': number;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Category>}
      * @memberof CategoryControllerGetAll200Response
      */
-    'content'?: Array<object>;
+    'content'?: Array<Category>;
 }
 /**
  * 
@@ -62,10 +179,35 @@ export interface CategoryControllerGetAll200Response {
 export interface CategoryControllerGetAll200ResponseAllOf {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Category>}
      * @memberof CategoryControllerGetAll200ResponseAllOf
      */
-    'content'?: Array<object>;
+    'content'?: Array<Category>;
+}
+/**
+ * 
+ * @export
+ * @interface Color
+ */
+export interface Color {
+    /**
+     * 
+     * @type {string}
+     * @memberof Color
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Color
+     */
+    'description': string;
+    /**
+     * 
+     * @type {Array<Product>}
+     * @memberof Color
+     */
+    'products': Array<Product>;
 }
 /**
  * 
@@ -93,10 +235,10 @@ export interface ColorControllerGetAll200Response {
     'size': number;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Color>}
      * @memberof ColorControllerGetAll200Response
      */
-    'content'?: Array<object>;
+    'content'?: Array<Color>;
 }
 /**
  * 
@@ -106,10 +248,10 @@ export interface ColorControllerGetAll200Response {
 export interface ColorControllerGetAll200ResponseAllOf {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Color>}
      * @memberof ColorControllerGetAll200ResponseAllOf
      */
-    'content'?: Array<object>;
+    'content'?: Array<Color>;
 }
 /**
  * 
@@ -137,10 +279,10 @@ export interface CreateBannerDto {
     'index'?: number;
     /**
      * 
-     * @type {object}
+     * @type {UpdateUserDtoAsset}
      * @memberof CreateBannerDto
      */
-    'asset'?: object;
+    'asset'?: UpdateUserDtoAsset;
 }
 /**
  * 
@@ -258,8 +400,16 @@ export interface CreateOtpDto {
      * @type {string}
      * @memberof CreateOtpDto
      */
-    'type': string;
+    'type': CreateOtpDtoTypeEnum;
 }
+
+export const CreateOtpDtoTypeEnum = {
+    Forgot: 'FORGOT',
+    Register: 'REGISTER'
+} as const;
+
+export type CreateOtpDtoTypeEnum = typeof CreateOtpDtoTypeEnum[keyof typeof CreateOtpDtoTypeEnum];
+
 /**
  * 
  * @export
@@ -316,28 +466,28 @@ export interface CreateProductDto {
     'isHidden': boolean;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Size>}
      * @memberof CreateProductDto
      */
-    'sizes'?: Array<object>;
+    'sizes'?: Array<Size>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Category>}
      * @memberof CreateProductDto
      */
-    'categories'?: Array<object>;
+    'categories'?: Array<Category>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Color>}
      * @memberof CreateProductDto
      */
-    'colors'?: Array<object>;
+    'colors'?: Array<Color>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Asset>}
      * @memberof CreateProductDto
      */
-    'assets'?: Array<object>;
+    'assets'?: Array<Asset>;
 }
 /**
  * 
@@ -422,16 +572,16 @@ export interface DeleteFileDtoUpdateFor {
     'table'?: string;
     /**
      * 
-     * @type {object}
+     * @type {UpdateUserDtoAsset}
      * @memberof DeleteFileDtoUpdateFor
      */
-    'asset'?: object;
+    'asset'?: UpdateUserDtoAsset;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Asset>}
      * @memberof DeleteFileDtoUpdateFor
      */
-    'assets'?: Array<object>;
+    'assets'?: Array<Asset>;
 }
 /**
  * 
@@ -455,6 +605,31 @@ export interface FilterOtpDto {
 /**
  * 
  * @export
+ * @interface ForgotDto
+ */
+export interface ForgotDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof ForgotDto
+     */
+    'identifier': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ForgotDto
+     */
+    'password': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ForgotDto
+     */
+    'code': string;
+}
+/**
+ * 
+ * @export
  * @interface LoginDto
  */
 export interface LoginDto {
@@ -470,6 +645,86 @@ export interface LoginDto {
      * @memberof LoginDto
      */
     'password': string;
+}
+/**
+ * 
+ * @export
+ * @interface LoginResponseDto
+ */
+export interface LoginResponseDto {
+    /**
+     * 
+     * @type {string}
+     * @memberof LoginResponseDto
+     */
+    'token': string;
+}
+/**
+ * 
+ * @export
+ * @interface Order
+ */
+export interface Order {
+    /**
+     * 
+     * @type {string}
+     * @memberof Order
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Order
+     */
+    'note': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Order
+     */
+    'status': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof Order
+     */
+    'total': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof Order
+     */
+    'asset': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Order
+     */
+    'address': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Order
+     */
+    'phone': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Order
+     */
+    'userId': string;
+    /**
+     * 
+     * @type {Array<OrderDetail>}
+     * @memberof Order
+     */
+    'order_detail': Array<OrderDetail>;
+    /**
+     * 
+     * @type {User}
+     * @memberof Order
+     */
+    'user': User;
 }
 /**
  * 
@@ -497,10 +752,10 @@ export interface OrderControllerGetAll200Response {
     'size': number;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Order>}
      * @memberof OrderControllerGetAll200Response
      */
-    'content'?: Array<object>;
+    'content'?: Array<Order>;
 }
 /**
  * 
@@ -510,10 +765,10 @@ export interface OrderControllerGetAll200Response {
 export interface OrderControllerGetAll200ResponseAllOf {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Order>}
      * @memberof OrderControllerGetAll200ResponseAllOf
      */
-    'content'?: Array<object>;
+    'content'?: Array<Order>;
 }
 /**
  * 
@@ -580,6 +835,97 @@ export interface PaginationResponse {
 /**
  * 
  * @export
+ * @interface Product
+ */
+export interface Product {
+    /**
+     * 
+     * @type {string}
+     * @memberof Product
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Product
+     */
+    'description': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Product
+     */
+    'status': boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof Product
+     */
+    'price_in': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Product
+     */
+    'price_out': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Product
+     */
+    'price_view': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Product
+     */
+    'sale_off': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Product
+     */
+    'view': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Product
+     */
+    'sold': number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Product
+     */
+    'isHidden': boolean;
+    /**
+     * 
+     * @type {Array<Size>}
+     * @memberof Product
+     */
+    'sizes': Array<Size>;
+    /**
+     * 
+     * @type {Array<Category>}
+     * @memberof Product
+     */
+    'categories': Array<Category>;
+    /**
+     * 
+     * @type {Array<Color>}
+     * @memberof Product
+     */
+    'colors': Array<Color>;
+    /**
+     * 
+     * @type {Array<Asset>}
+     * @memberof Product
+     */
+    'assets': Array<Asset>;
+}
+/**
+ * 
+ * @export
  * @interface ProductControllerGetAll200Response
  */
 export interface ProductControllerGetAll200Response {
@@ -603,10 +949,10 @@ export interface ProductControllerGetAll200Response {
     'size': number;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Product>}
      * @memberof ProductControllerGetAll200Response
      */
-    'content'?: Array<object>;
+    'content'?: Array<Product>;
 }
 /**
  * 
@@ -616,10 +962,10 @@ export interface ProductControllerGetAll200Response {
 export interface ProductControllerGetAll200ResponseAllOf {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Product>}
      * @memberof ProductControllerGetAll200ResponseAllOf
      */
-    'content'?: Array<object>;
+    'content'?: Array<Product>;
 }
 /**
  * 
@@ -639,6 +985,43 @@ export interface RegisterUserDto {
      * @memberof RegisterUserDto
      */
     'password': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof RegisterUserDto
+     */
+    'code': string;
+}
+/**
+ * 
+ * @export
+ * @interface Role
+ */
+export interface Role {
+    /**
+     * 
+     * @type {string}
+     * @memberof Role
+     */
+    'name': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Role
+     */
+    'isHidden': boolean;
+    /**
+     * 
+     * @type {Array<User>}
+     * @memberof Role
+     */
+    'users'?: Array<User>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Role
+     */
+    'permissions': Array<string>;
 }
 /**
  * 
@@ -666,10 +1049,10 @@ export interface RoleControllerGet200Response {
     'size': number;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Role>}
      * @memberof RoleControllerGet200Response
      */
-    'content'?: Array<object>;
+    'content'?: Array<Role>;
 }
 /**
  * 
@@ -679,10 +1062,35 @@ export interface RoleControllerGet200Response {
 export interface RoleControllerGet200ResponseAllOf {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Role>}
      * @memberof RoleControllerGet200ResponseAllOf
      */
-    'content'?: Array<object>;
+    'content'?: Array<Role>;
+}
+/**
+ * 
+ * @export
+ * @interface Size
+ */
+export interface Size {
+    /**
+     * 
+     * @type {string}
+     * @memberof Size
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Size
+     */
+    'description': string;
+    /**
+     * 
+     * @type {Array<Product>}
+     * @memberof Size
+     */
+    'products': Array<Product>;
 }
 /**
  * 
@@ -710,10 +1118,10 @@ export interface SizeControllerGetAll200Response {
     'size': number;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Size>}
      * @memberof SizeControllerGetAll200Response
      */
-    'content'?: Array<object>;
+    'content'?: Array<Size>;
 }
 /**
  * 
@@ -723,10 +1131,10 @@ export interface SizeControllerGetAll200Response {
 export interface SizeControllerGetAll200ResponseAllOf {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Size>}
      * @memberof SizeControllerGetAll200ResponseAllOf
      */
-    'content'?: Array<object>;
+    'content'?: Array<Size>;
 }
 /**
  * 
@@ -754,10 +1162,10 @@ export interface UpdateBannerDto {
     'index'?: number;
     /**
      * 
-     * @type {object}
+     * @type {UpdateUserDtoAsset}
      * @memberof UpdateBannerDto
      */
-    'asset'?: object;
+    'asset'?: UpdateUserDtoAsset;
 }
 /**
  * 
@@ -817,16 +1225,16 @@ export interface UpdateFor {
     'table'?: string;
     /**
      * 
-     * @type {object}
+     * @type {UpdateUserDtoAsset}
      * @memberof UpdateFor
      */
-    'asset'?: object;
+    'asset'?: UpdateUserDtoAsset;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Asset>}
      * @memberof UpdateFor
      */
-    'assets'?: Array<object>;
+    'assets'?: Array<Asset>;
 }
 /**
  * 
@@ -964,28 +1372,28 @@ export interface UpdateProductDto {
     'isHidden'?: boolean;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Size>}
      * @memberof UpdateProductDto
      */
-    'sizes'?: Array<object>;
+    'sizes'?: Array<Size>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Category>}
      * @memberof UpdateProductDto
      */
-    'categories'?: Array<object>;
+    'categories'?: Array<Category>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Color>}
      * @memberof UpdateProductDto
      */
-    'colors'?: Array<object>;
+    'colors'?: Array<Color>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Asset>}
      * @memberof UpdateProductDto
      */
-    'assets'?: Array<object>;
+    'assets'?: Array<Asset>;
 }
 /**
  * 
@@ -1069,11 +1477,165 @@ export interface UpdateUserDto {
     'address_detail'?: string;
     /**
      * 
-     * @type {object}
+     * @type {UpdateUserDtoAsset}
      * @memberof UpdateUserDto
      */
-    'asset'?: object;
+    'asset'?: UpdateUserDtoAsset;
 }
+/**
+ * 
+ * @export
+ * @interface UpdateUserDtoAsset
+ */
+export interface UpdateUserDtoAsset {
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateUserDtoAsset
+     */
+    'name': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateUserDtoAsset
+     */
+    'type': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateUserDtoAsset
+     */
+    'mimeType': string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateUserDtoAsset
+     */
+    'width': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateUserDtoAsset
+     */
+    'height': number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UpdateUserDtoAsset
+     */
+    'fileSize': number;
+    /**
+     * 
+     * @type {string}
+     * @memberof UpdateUserDtoAsset
+     */
+    'source': string;
+    /**
+     * 
+     * @type {Array<Product>}
+     * @memberof UpdateUserDtoAsset
+     */
+    'products': Array<Product>;
+}
+/**
+ * 
+ * @export
+ * @interface User
+ */
+export interface User {
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'identifier': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'type': UserTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'passwordHash': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'isActive': boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'verified': boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'displayName': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'dob': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'phone': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'address': string;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    'address_detail': string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    'assetId': boolean;
+    /**
+     * 
+     * @type {Array<Role>}
+     * @memberof User
+     */
+    'roles': Array<Role>;
+    /**
+     * 
+     * @type {Asset}
+     * @memberof User
+     */
+    'asset'?: Asset;
+    /**
+     * 
+     * @type {Order}
+     * @memberof User
+     */
+    'order': Order;
+}
+
+export const UserTypeEnum = {
+    User: 'User',
+    Admin: 'Admin'
+} as const;
+
+export type UserTypeEnum = typeof UserTypeEnum[keyof typeof UserTypeEnum];
+
 /**
  * 
  * @export
@@ -1100,10 +1662,10 @@ export interface UserControllerGetAllDoctor200Response {
     'size': number;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<User>}
      * @memberof UserControllerGetAllDoctor200Response
      */
-    'content'?: Array<object>;
+    'content'?: Array<User>;
 }
 /**
  * 
@@ -1113,10 +1675,10 @@ export interface UserControllerGetAllDoctor200Response {
 export interface UserControllerGetAllDoctor200ResponseAllOf {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<User>}
      * @memberof UserControllerGetAllDoctor200ResponseAllOf
      */
-    'content'?: Array<object>;
+    'content'?: Array<User>;
 }
 
 /**
@@ -1276,7 +1838,7 @@ export const AssetsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async assetControllerUploadFile(file: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async assetControllerUploadFile(file: File, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Asset>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.assetControllerUploadFile(file, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1313,7 +1875,7 @@ export const AssetsApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        assetControllerUploadFile(file: File, options?: any): AxiosPromise<void> {
+        assetControllerUploadFile(file: File, options?: any): AxiosPromise<Asset> {
             return localVarFp.assetControllerUploadFile(file, options).then((request) => request(axios, basePath));
         },
     };
@@ -1457,7 +2019,7 @@ export const AuthAdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authAdminControllerLogin(loginDto: LoginDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async authAdminControllerLogin(loginDto: LoginDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LoginResponseDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authAdminControllerLogin(loginDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1467,7 +2029,7 @@ export const AuthAdminApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authAdminControllerMe(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async authAdminControllerMe(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authAdminControllerMe(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1488,7 +2050,7 @@ export const AuthAdminApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authAdminControllerLogin(loginDto: LoginDto, options?: any): AxiosPromise<void> {
+        authAdminControllerLogin(loginDto: LoginDto, options?: any): AxiosPromise<LoginResponseDto> {
             return localVarFp.authAdminControllerLogin(loginDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1497,7 +2059,7 @@ export const AuthAdminApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authAdminControllerMe(options?: any): AxiosPromise<void> {
+        authAdminControllerMe(options?: any): AxiosPromise<User> {
             return localVarFp.authAdminControllerMe(options).then((request) => request(axios, basePath));
         },
     };
@@ -1543,6 +2105,45 @@ export const AuthUserApiAxiosParamCreator = function (configuration?: Configurat
     return {
         /**
          * 
+         * @param {ForgotDto} forgotDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authUserControllerForgot: async (forgotDto: ForgotDto, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'forgotDto' is not null or undefined
+            assertParamExists('authUserControllerForgot', 'forgotDto', forgotDto)
+            const localVarPath = `/auth-user/forgot-password`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            localVarHeaderParameter['Content-Type'] = 'application/json';
+
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = serializeDataIfNeeded(forgotDto, localVarRequestOptions, configuration)
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Login
          * @param {LoginDto} loginDto 
          * @param {*} [options] Override http request option.
@@ -1583,7 +2184,6 @@ export const AuthUserApiAxiosParamCreator = function (configuration?: Configurat
         },
         /**
          * 
-         * @summary Me
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
@@ -1667,22 +2267,31 @@ export const AuthUserApiFp = function(configuration?: Configuration) {
     return {
         /**
          * 
+         * @param {ForgotDto} forgotDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async authUserControllerForgot(forgotDto: ForgotDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.authUserControllerForgot(forgotDto, options);
+            return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
+        },
+        /**
+         * 
          * @summary Login
          * @param {LoginDto} loginDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authUserControllerLogin(loginDto: LoginDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async authUserControllerLogin(loginDto: LoginDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<LoginResponseDto>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authUserControllerLogin(loginDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
          * 
-         * @summary Me
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async authUserControllerMe(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async authUserControllerMe(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<User>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.authUserControllerMe(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1709,21 +2318,29 @@ export const AuthUserApiFactory = function (configuration?: Configuration, baseP
     return {
         /**
          * 
+         * @param {ForgotDto} forgotDto 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        authUserControllerForgot(forgotDto: ForgotDto, options?: any): AxiosPromise<object> {
+            return localVarFp.authUserControllerForgot(forgotDto, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Login
          * @param {LoginDto} loginDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authUserControllerLogin(loginDto: LoginDto, options?: any): AxiosPromise<void> {
+        authUserControllerLogin(loginDto: LoginDto, options?: any): AxiosPromise<LoginResponseDto> {
             return localVarFp.authUserControllerLogin(loginDto, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Me
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        authUserControllerMe(options?: any): AxiosPromise<void> {
+        authUserControllerMe(options?: any): AxiosPromise<User> {
             return localVarFp.authUserControllerMe(options).then((request) => request(axios, basePath));
         },
         /**
@@ -1748,6 +2365,17 @@ export const AuthUserApiFactory = function (configuration?: Configuration, baseP
 export class AuthUserApi extends BaseAPI {
     /**
      * 
+     * @param {ForgotDto} forgotDto 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AuthUserApi
+     */
+    public authUserControllerForgot(forgotDto: ForgotDto, options?: AxiosRequestConfig) {
+        return AuthUserApiFp(this.configuration).authUserControllerForgot(forgotDto, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
      * @summary Login
      * @param {LoginDto} loginDto 
      * @param {*} [options] Override http request option.
@@ -1760,7 +2388,6 @@ export class AuthUserApi extends BaseAPI {
 
     /**
      * 
-     * @summary Me
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AuthUserApi
@@ -1920,7 +2547,7 @@ export const BannerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bannerControllerCreate(createBannerDto: CreateBannerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async bannerControllerCreate(createBannerDto: CreateBannerDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.bannerControllerCreate(createBannerDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1929,7 +2556,7 @@ export const BannerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async bannerControllerGetAll(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async bannerControllerGetAll(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<Banner>>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.bannerControllerGetAll(options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1960,7 +2587,7 @@ export const BannerApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bannerControllerCreate(createBannerDto: CreateBannerDto, options?: any): AxiosPromise<void> {
+        bannerControllerCreate(createBannerDto: CreateBannerDto, options?: any): AxiosPromise<object> {
             return localVarFp.bannerControllerCreate(createBannerDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1968,7 +2595,7 @@ export const BannerApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        bannerControllerGetAll(options?: any): AxiosPromise<void> {
+        bannerControllerGetAll(options?: any): AxiosPromise<Array<Banner>> {
             return localVarFp.bannerControllerGetAll(options).then((request) => request(axios, basePath));
         },
         /**
@@ -2497,7 +3124,7 @@ export const CategoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async categoryControllerCreate(createCategoryDto: CreateCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async categoryControllerCreate(createCategoryDto: CreateCategoryDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.categoryControllerCreate(createCategoryDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2530,7 +3157,7 @@ export const CategoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async categoryControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async categoryControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Category>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.categoryControllerGetById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2561,7 +3188,7 @@ export const CategoryApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categoryControllerCreate(createCategoryDto: CreateCategoryDto, options?: any): AxiosPromise<void> {
+        categoryControllerCreate(createCategoryDto: CreateCategoryDto, options?: any): AxiosPromise<object> {
             return localVarFp.categoryControllerCreate(createCategoryDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2591,7 +3218,7 @@ export const CategoryApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        categoryControllerGetById(id: string, options?: any): AxiosPromise<void> {
+        categoryControllerGetById(id: string, options?: any): AxiosPromise<Category> {
             return localVarFp.categoryControllerGetById(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -2908,7 +3535,7 @@ export const ColorApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async colorControllerCreate(createColorDto: CreateColorDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async colorControllerCreate(createColorDto: CreateColorDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.colorControllerCreate(createColorDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2941,7 +3568,7 @@ export const ColorApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async colorControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async colorControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Color>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.colorControllerGetById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -2972,7 +3599,7 @@ export const ColorApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        colorControllerCreate(createColorDto: CreateColorDto, options?: any): AxiosPromise<void> {
+        colorControllerCreate(createColorDto: CreateColorDto, options?: any): AxiosPromise<object> {
             return localVarFp.colorControllerCreate(createColorDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3002,7 +3629,7 @@ export const ColorApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        colorControllerGetById(id: string, options?: any): AxiosPromise<void> {
+        colorControllerGetById(id: string, options?: any): AxiosPromise<Color> {
             return localVarFp.colorControllerGetById(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3324,7 +3951,7 @@ export const OrderApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async orderControllerCreate(createOrderDto: CreateOrderDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async orderControllerCreate(createOrderDto: CreateOrderDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerCreate(createOrderDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3358,7 +3985,7 @@ export const OrderApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async orderControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async orderControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Order>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.orderControllerGetById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3389,7 +4016,7 @@ export const OrderApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orderControllerCreate(createOrderDto: CreateOrderDto, options?: any): AxiosPromise<void> {
+        orderControllerCreate(createOrderDto: CreateOrderDto, options?: any): AxiosPromise<object> {
             return localVarFp.orderControllerCreate(createOrderDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3420,7 +4047,7 @@ export const OrderApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        orderControllerGetById(id: string, options?: any): AxiosPromise<void> {
+        orderControllerGetById(id: string, options?: any): AxiosPromise<Order> {
             return localVarFp.orderControllerGetById(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -3919,7 +4546,7 @@ export const ProductApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async productControllerCreate(createProductDto: CreateProductDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async productControllerCreate(createProductDto: CreateProductDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerCreate(createProductDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3953,7 +4580,7 @@ export const ProductApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async productControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async productControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Product>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerGetById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -3984,7 +4611,7 @@ export const ProductApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        productControllerCreate(createProductDto: CreateProductDto, options?: any): AxiosPromise<void> {
+        productControllerCreate(createProductDto: CreateProductDto, options?: any): AxiosPromise<object> {
             return localVarFp.productControllerCreate(createProductDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4015,7 +4642,7 @@ export const ProductApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        productControllerGetById(id: string, options?: any): AxiosPromise<void> {
+        productControllerGetById(id: string, options?: any): AxiosPromise<Product> {
             return localVarFp.productControllerGetById(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4333,7 +4960,7 @@ export const RolesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async roleControllerCreate(createRoleDto: CreateRoleDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async roleControllerCreate(createRoleDto: CreateRoleDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.roleControllerCreate(createRoleDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4343,7 +4970,7 @@ export const RolesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async roleControllerDelete(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async roleControllerDelete(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.roleControllerDelete(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4366,7 +4993,7 @@ export const RolesApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async roleControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async roleControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Role>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.roleControllerGetById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4397,7 +5024,7 @@ export const RolesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        roleControllerCreate(createRoleDto: CreateRoleDto, options?: any): AxiosPromise<void> {
+        roleControllerCreate(createRoleDto: CreateRoleDto, options?: any): AxiosPromise<Role> {
             return localVarFp.roleControllerCreate(createRoleDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4406,7 +5033,7 @@ export const RolesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        roleControllerDelete(id: string, options?: any): AxiosPromise<void> {
+        roleControllerDelete(id: string, options?: any): AxiosPromise<object> {
             return localVarFp.roleControllerDelete(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4427,7 +5054,7 @@ export const RolesApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        roleControllerGetById(id: string, options?: any): AxiosPromise<void> {
+        roleControllerGetById(id: string, options?: any): AxiosPromise<Role> {
             return localVarFp.roleControllerGetById(id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4744,7 +5371,7 @@ export const SizeApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sizeControllerCreate(createSizeDto: CreateSizeDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async sizeControllerCreate(createSizeDto: CreateSizeDto, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<object>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.sizeControllerCreate(createSizeDto, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4777,7 +5404,7 @@ export const SizeApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async sizeControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<void>> {
+        async sizeControllerGetById(id: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Size>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.sizeControllerGetById(id, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -4808,7 +5435,7 @@ export const SizeApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sizeControllerCreate(createSizeDto: CreateSizeDto, options?: any): AxiosPromise<void> {
+        sizeControllerCreate(createSizeDto: CreateSizeDto, options?: any): AxiosPromise<object> {
             return localVarFp.sizeControllerCreate(createSizeDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -4838,7 +5465,7 @@ export const SizeApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        sizeControllerGetById(id: string, options?: any): AxiosPromise<void> {
+        sizeControllerGetById(id: string, options?: any): AxiosPromise<Size> {
             return localVarFp.sizeControllerGetById(id, options).then((request) => request(axios, basePath));
         },
         /**
