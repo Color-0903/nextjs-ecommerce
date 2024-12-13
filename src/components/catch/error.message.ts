@@ -6,5 +6,6 @@ export const ErrorMessage : { [key: number | string]: string } = {
   409: 'Dữ liệu đã tồn tại!',
   'OTP_EXPIRED': 'Mã OTP hết hạn sử dụng!',
   'LIMITED_TIME': 'Chưa thể gửi yêu cầu tạo mã OTP mới!',
-  'OTP_MISMATCH': 'Mã OTP nhập không chính xác'
+  'OTP_MISMATCH': 'Mã OTP nhập không chính xác',
+  "": ""
 };

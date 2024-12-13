@@ -69,7 +69,7 @@ const Login = () => {
                     </h1>
                     <form className="space-y-4 md:space-y-6 pt-3" onSubmit={formik.handleSubmit}>
                         <div>
-                            <CustomInput   onChange={formik.handleChange} value={formik.values.email} type="text" id="email" placeholder="Email" label="Email" error={formik?.errors?.email} />
+                            <CustomInput  onChange={formik.handleChange} value={formik.values.email} type="text" id="email" placeholder="Email" label="Email" error={formik?.errors?.email} />
                         </div>
                         <div>
                             <CustomInput onChange={formik.handleChange} value={formik.values.password} id="password" isPassword={true} label="Mật khẩu" error={formik?.errors?.password} />

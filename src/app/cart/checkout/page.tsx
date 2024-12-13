@@ -124,7 +124,7 @@ const Checkout = () => {
                                     </div>
                                 </form>
                             </div>
-                            <div className="fixed lg:static bottom-0 left-0 right-0 mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full z-50">
+                            <div className="fixed lg:static bottom-0 left-0 right-0 mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full z-40">
                                 <div className="space-y-2 md:space-y-4 rounded-lg border border-gray-200 bg-white  shadow-sm dark:border-gray-700 dark:bg-gray-800 p-2 md:p-6">
                                     <div>
                                         <p className="text-xl font-semibold text-gray-900 border-b">Đơn hàng</p>
@@ -152,7 +152,7 @@ const Checkout = () => {
                                         </div>
 
                                         <div className="mt-4">
-                                            <Link href={USER_ROUTER.CHECKOUT} className="text-right pt-1 md:pt-2">
+                                            <Link href={USER_ROUTER.PAYMENT} className="text-right pt-1 md:pt-2">
                                                 <PrimaryButton type="submit" className="bg-primary py-3 w-full">Thanh toán</PrimaryButton>
                                             </Link>
                                         </div>

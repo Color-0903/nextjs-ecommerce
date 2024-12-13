@@ -5,4 +5,5 @@ export const USER_ROUTER = {
     FORGOT: "/auth/forgot",
     CART: "/cart",
     CHECKOUT: "/cart/checkout",
+    PAYMENT: "/cart/payment",
 };

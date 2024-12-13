@@ -18,7 +18,7 @@ const Stepper = (props: StepperInterface) => {
                 steps?.map((step, index) => {
                     const color = { textStyle: step.key <= current ? 'color-primary font-semibold' : 'text-gray-900', borderStyle: step.key === current ? 'border-violet-900 text-violet-900' : 'border-gray-500' };
                     return (
-                        <li className={`flex items-center ${color.textStyle}`}>
+                        <li className={`flex items-center ${color.textStyle}`} key={index}>
                             <span className={`flex items-center justify-center w-5 h-5 me-2 text-xs border rounded-full shrink-0 ${color.borderStyle}`}>
                                 {index + 1}
                             </span>
